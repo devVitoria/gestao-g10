@@ -9,10 +9,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
+import MenuDrawer from "./utils/components/menu-drawer";
 
 export default function MenuAppBar() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-
+  const [showMenuDrawer, setShowMenuDrawer] = React.useState(false);
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -22,7 +23,9 @@ export default function MenuAppBar() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, width: "100vw" }}>
+    <div className="flex-1 absolute top-0">
+    <Box sx={{ flexGrow: 1, width: "100vw" }} >
+
       <AppBar
         variant="elevation"
         position="static"
@@ -38,6 +41,9 @@ export default function MenuAppBar() {
             aria-label="menu"
             className="opacity-70"
             sx={{ mr: 2 }}
+            onClick={() => {
+              setShowMenuDrawer(true);
+            }}
           >
             <MenuIcon />
           </IconButton>
@@ -83,5 +89,8 @@ export default function MenuAppBar() {
         </Toolbar>
       </AppBar>
     </Box>
+      <MenuDrawer open={showMenuDrawer} setOpen={setShowMenuDrawer}/>
+
+    </div>
   );
 }

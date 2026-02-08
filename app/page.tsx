@@ -1,13 +1,22 @@
+"use client";
 import Threads from "@/components/home-background/threads-file";
 import MenuAppBar from "../components/header";
+import SwipeableTemporaryDrawer from "@/components/header/utils/components/menu-drawer";
+import MenuDrawer from "@/components/header/utils/components/menu-drawer";
+import React, { useState } from "react";
 
 export default function Home() {
   const currentYear = new Date().getFullYear();
+
   return (
-    <div className="w-full h-150 relative">
-      <div className="flex flex-col items-start absolute top-0 w-full left-0 right-0"> 
+    <>
+      <div className="flex-1 w-full h-150  absolute">
+        <Threads amplitude={1} distance={0} enableMouseInteraction />
+      </div>
+
+      <div className="flex flex-col items-start w-full">
         <MenuAppBar />
-        <div className="p-5">
+        <div className="mt-10 p-5">
           <p className="italic opacity-70 font-bold text-xl">
             Gestão G-10 {currentYear}.
           </p>
@@ -16,8 +25,6 @@ export default function Home() {
           </p>
         </div>
       </div>
-
-      <Threads amplitude={1} distance={0} enableMouseInteraction />
-    </div>
+    </>
   );
 }
