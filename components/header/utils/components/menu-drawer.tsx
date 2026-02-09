@@ -1,15 +1,11 @@
-"use client";
-import * as React from "react";
+'use client'
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import grzLogo from "../../../../assets/images/grz-logo.png";
-import { IoCalendarNumberSharp } from "react-icons/io5";
+import { MenuDrawerProps } from "../interface";
+import { menuOptions } from "../constants";
 
-interface MenuDrawerProps {
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  open: boolean;
-}
-export default function MenuDrawer({ setOpen, open }: MenuDrawerProps) {
-  return (
+export default function MenuDrawer({ setOpen, open, router }: MenuDrawerProps) {
+    return (
     <SwipeableDrawer
       anchor={"left"}
       style={{ width: "100vw" }}
@@ -27,7 +23,7 @@ export default function MenuDrawer({ setOpen, open }: MenuDrawerProps) {
         },
       }}
     >
-      <div className="flex flex-1 p-6 flex-col gap-6">
+      <div className="flex w-full flex-1 p-4 flex-col gap-6">
         <div className="flex flex-col items-center">
           <div className="flex flex-row items-center gap-2">
             <img
@@ -43,13 +39,20 @@ export default function MenuDrawer({ setOpen, open }: MenuDrawerProps) {
           </div>
           <p className="italic opacity-70 text-xs text-white/80">2026</p>
         </div>
-
-        <div className="flex flex-row justify-start items-start gap-2 ">
-          <IoCalendarNumberSharp color="#9A9A9A" width={14} height={14} />
-
-          <p className="italic opacity-70 text-sm text-white/80 hover:text-white">
-            Calendário de reuniões
-          </p>
+        <div className="flex w-full flex-col gap-4">
+          {menuOptions.map((o) => (
+            <div
+              className="flex flex-row justify-start items-center gap-1"
+              onClick={() =>
+                router.push(o.path ?? "")
+              }
+            >
+              {o.icon}
+              <p className="italic opacity-70 text-xs text-white/80 hover:text-white hover:cursor-pointer hover:font-bold">
+                {o.title}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </SwipeableDrawer>
