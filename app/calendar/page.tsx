@@ -6,13 +6,13 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "../../components/pages/calendar-utils/calendar.css";
 import "moment/locale/pt-br";
+import { LuCalendarPlus } from "react-icons/lu";
 
 moment.locale("pt-br");
 export default function CalendarPage() {
   const router = useRouter();
 
   const localizer = momentLocalizer(moment);
-
 
   //TODO: mandar do back end depoiiis
   const myEventsList = [
@@ -33,6 +33,10 @@ export default function CalendarPage() {
       end: new Date(),
     },
   ];
+
+  const handleInsertNewEvent = () => {
+    console.log("Inserir um evento");
+  };
   return (
     <div className="flex flex-col items-start w-full bg-black/50">
       <MenuAppBar router={router} menuName={"Calendário de Reuniões"} />
@@ -65,6 +69,16 @@ export default function CalendarPage() {
               borderColor: "red",
             }}
           />
+        </div>
+
+        <div
+          onClick={() => {
+            handleInsertNewEvent;
+          }}
+          className="absolute right-5 bottom-5 flex flex-row gap-2 items-center p-2 bg-[#18526b] rounded-2xl hover:cursor-pointer"
+        >
+          <LuCalendarPlus />
+          <p className="font-medium text-white text-sm hover:font-bold">Adicionar Evento</p>
         </div>
       </div>
     </div>
