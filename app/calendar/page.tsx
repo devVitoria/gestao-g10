@@ -41,7 +41,7 @@ export default function CalendarPage() {
     <div className="flex flex-col items-start w-full bg-black/50">
       <MenuAppBar router={router} menuName={"Calendário de Reuniões"} />
       <div className="flex flex-1 w-full px-10 mt-12  justify-center items-center">
-        <div className=" bg-blue-900/10 rounded-2xl w-full ">
+        <div className=" bg-gray-600/10 rounded-2xl w-full ">
           <Calendar
             localizer={localizer}
             events={myEventsList}
@@ -75,10 +75,10 @@ export default function CalendarPage() {
           onClick={() => {
             handleInsertNewEvent;
           }}
-          className="absolute right-5 bottom-5 flex flex-row gap-2 items-center p-2 bg-[#18526b] rounded-2xl hover:cursor-pointer"
+          className="absolute right-5 bottom-5 flex flex-row gap-2 items-center p-2 bg-white rounded-2xl hover:cursor-pointer"
         >
-          <LuCalendarPlus />
-          <p className="font-medium text-white text-sm hover:font-bold">Adicionar Evento</p>
+          <LuCalendarPlus color={'#101828'} className="w-4 h-4" />
+          <p className="text-gray-900 text-sm ">Adicionar Evento</p>
         </div>
       </div>
     </div>

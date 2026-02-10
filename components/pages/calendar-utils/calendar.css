@@ -3,12 +3,10 @@
   padding: 16px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
     'Lucida Sans', Arial, sans-serif;
-  background: transparent;
 }
 
 .rbc-toolbar {
   padding: 14px 18px;
-  background: #ffffff;
   border-radius: 12px;
   margin-bottom: 14px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
@@ -23,8 +21,8 @@
 }
 
 .rbc-toolbar button {
-  background: #ffffff;
-  color: #032f42;
+  color: #fff;
+  opacity: 0.7;
   padding: 6px 14px;
   font-size: 0.85rem;
   font-weight: 600;
@@ -39,23 +37,27 @@
 }
 
 .rbc-toolbar button.rbc-active {
-  background: #021e2a;
-  border-color: #021e2a;
+  background: #6a6b6b;
+  opacity: 0.7;
+  border-color: #636464;
   color: #ffffff;
 }
 
 .rbc-toolbar-label {
-  color: #032f42;
+  color: #fff;
+  opacity: 0.7;
+    text-transform: uppercase;
+
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 20;
   letter-spacing: 0.5px;
 }
 
 .rbc-header {
-  background: #ffffff;
-  color: #0b5f7d;
+  color: #fff;
   padding: 9px 0;
   font-weight: 700;
+  opacity: 0.7;
   font-size: 0.75rem;
   letter-spacing: 0.4px;
   text-transform: uppercase;
@@ -65,12 +67,12 @@
 .rbc-month-view {
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid #e2e8f0;
-  background: #ffffff;
+  border: 1px solid #ffff;
+  opacity: 70;
 }
 
 .rbc-day-bg {
-  background: #ffffff;
+  background: #0000;
   border-right: 1px solid #e2e8f0;
   border-bottom: 1px solid #e2e8f0;
 }
@@ -80,27 +82,30 @@
 }
 
 .rbc-today {
-  background-color: #eaf6fb;
+  background-color: #454546;
 }
 
 .rbc-date-cell {
   padding: 6px;
   font-weight: 700;
-  color: #043f57;
+  color: #ffff;
+  opacity: 0.7;
 }
 
 .rbc-event {
-  background: #0b5f7d;
+  background: #ffff;
   border-radius: 8px;
   padding: 4px 6px;
   font-size: 0.75rem;
+  opacity: 0.7;
   font-weight: 600;
   border: none;
-  color: #ffffff;
+  color: #000;
 }
 
 .rbc-event:hover {
-  background: #0e7490;
+  background: #fff;
+  opacity: 1;
 }
 
 .rbc-agenda-view table {
@@ -108,8 +113,8 @@
 }
 
 .rbc-agenda-view th {
-  background: #ffffff;
-  color: #0b5f7d;
+  background: #0000;
+  color: #0000;
   padding: 10px;
   font-weight: 700;
   border-bottom: 1px solid #e2e8f0;
@@ -118,7 +123,10 @@
 .rbc-agenda-view td {
   padding: 10px;
   border-bottom: 1px solid #e2e8f0;
-  background: #ffffff;
+  background: #0000;
+  
+  color: #fff;
+  opacity: 0.7;
 }
 
 @media (max-width: 768px) {
