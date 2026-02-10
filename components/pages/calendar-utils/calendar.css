@@ -1,0 +1,133 @@
+.rbc-calendar {
+  border-radius: 14px;
+  padding: 16px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  background: transparent;
+}
+
+.rbc-toolbar {
+  padding: 14px 18px;
+  background: #ffffff;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rbc-toolbar .rbc-btn-group {
+  display: flex;
+  gap: 8px;
+}
+
+.rbc-toolbar button {
+  background: #ffffff;
+  color: #032f42;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rbc-toolbar button:hover {
+  background: #f1f7fa;
+}
+
+.rbc-toolbar button.rbc-active {
+  background: #021e2a;
+  border-color: #021e2a;
+  color: #ffffff;
+}
+
+.rbc-toolbar-label {
+  color: #032f42;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.rbc-header {
+  background: #ffffff;
+  color: #0b5f7d;
+  padding: 9px 0;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.rbc-month-view {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+}
+
+.rbc-day-bg {
+  background: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.rbc-day-bg:last-child {
+  border-right: none;
+}
+
+.rbc-today {
+  background-color: #eaf6fb;
+}
+
+.rbc-date-cell {
+  padding: 6px;
+  font-weight: 700;
+  color: #043f57;
+}
+
+.rbc-event {
+  background: #0b5f7d;
+  border-radius: 8px;
+  padding: 4px 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: none;
+  color: #ffffff;
+}
+
+.rbc-event:hover {
+  background: #0e7490;
+}
+
+.rbc-agenda-view table {
+  border-collapse: collapse;
+}
+
+.rbc-agenda-view th {
+  background: #ffffff;
+  color: #0b5f7d;
+  padding: 10px;
+  font-weight: 700;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.rbc-agenda-view td {
+  padding: 10px;
+  border-bottom: 1px solid #e2e8f0;
+  background: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .rbc-toolbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .rbc-toolbar-label {
+    font-size: 0.9rem;
+  }
+}
