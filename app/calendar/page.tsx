@@ -75,10 +75,10 @@ export default function CalendarPage() {
           onClick={() => {
             handleInsertNewEvent;
           }}
-          className="absolute right-5 bottom-5 flex flex-row gap-2 items-center p-2 bg-white rounded-2xl hover:cursor-pointer"
+          className="absolute right-5 bottom-5 flex flex-row gap-2 items-center p-2 opacity-70 hover:opacity-100 bg-white rounded-2xl hover:cursor-pointer"
         >
-          <LuCalendarPlus color={'#101828'} className="w-4 h-4" />
-          <p className="text-gray-900 text-sm ">Adicionar Evento</p>
+          <LuCalendarPlus color={'#000'} className="w-4 h-4" />
+          <p className="text-black text-sm font-bold">Adicionar Evento</p>
         </div>
       </div>
     </div>
