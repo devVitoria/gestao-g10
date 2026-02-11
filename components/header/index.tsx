@@ -37,7 +37,7 @@ export default function MenuAppBar({
   };
 
   return (
-    <div className="flex-1 absolute top-0">
+    <div className="flex-1  top-0">
       <Box sx={{ flexGrow: 1, width: "100vw" }}>
         <AppBar
           variant="elevation"

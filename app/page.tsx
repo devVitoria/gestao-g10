@@ -16,7 +16,7 @@ export default function Home() {
 
       <div className="flex flex-col items-start w-full">
         <MenuAppBar router={router} />
-        <div className="mt-10 p-5">
+        <div className="p-5">
           <p className="italic opacity-70 font-bold text-xl">
             Gestão G-10 {currentYear}.
           </p>
