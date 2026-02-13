@@ -6,11 +6,13 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "../../components/pages/calendar-utils/calendar.css";
 import "../../components/pages/calendar-utils/form.css";
+import { toast } from "react-hot-toast";
 
 import "moment/locale/pt-br";
 import { useForm } from "@tanstack/react-form";
 import { useState } from "react";
 import {
+  ConflictDayProps,
   eventCalendarTypeFields,
   eventListProps,
 } from "@/components/pages/calendar-utils/interface";
@@ -20,6 +22,7 @@ import {
 } from "@/components/pages/calendar-utils/constants";
 import { IoIosAddCircle } from "react-icons/io";
 import { FaTasks } from "react-icons/fa";
+import { MdAdd } from "react-icons/md";
 
 moment.locale("pt-br");
 
@@ -48,6 +51,75 @@ export default function CalendarPage() {
         `${value.start} ${value.hour}`,
         "YYYY-MM-DD HH:mm",
       );
+      const emptyField = value.duration === '' || value.hour === '' || value.start === '' || value.title === ''
+      const invalidDate = startDate.isBefore(moment());
+      const invalidYear = startDate.isAfter(moment().endOf("year"));
+      const hourSplited = value.hour.split(":");
+      const validHour =
+        Number(hourSplited[0]) >= 7 &&
+        Number(hourSplited[0]) <= 19 &&
+        Number(hourSplited[1]) >= 0 &&
+        Number(hourSplited[0]) <= 59;
+        
+        const conflictStart = myEventsList.find((e) => {
+          moment(e.start) === startDate
+        })
+
+        const sameDay = myEventsList.filter((e) => {
+          moment(e.start).format("YYYY-MM-DD") === moment(startDate).format("YYYY-MM-DD") 
+        })
+        let conflictDay: ConflictDayProps = {
+          has: false,
+          title: ''
+        }
+
+        if(sameDay.length > 0) {
+          for (const day of sameDay) {
+            const isBetweenStart = startDate.isBetween(moment(day.start), moment(day.end))
+
+            if (isBetweenStart) {
+              conflictDay = {
+                has: true,
+                title: day.title
+              }
+            }
+          }
+        }
+
+        if (emptyField) {
+              toast.error(
+          "Todos os campos precisam ser preenchidos para que o evento seja cadastrado",
+        );
+        return;
+        }
+      if (!validHour) {
+        toast.error(
+          "O horário de início do evento precisa estar dentro do horário comercial! 07h:00 min à 19h:59 min",
+        );
+        return;
+      }
+      if (invalidDate) {
+        toast.error(
+          "A data de início do evento deve ser superior a data atual!",
+        );
+        return;
+      }
+
+      if (invalidYear) {
+        toast.error("A data de início do evento deve ser esse ano!");
+        return;
+      }
+
+      if (conflictStart) {
+         toast.error(`Existe um evento cadastrado com o mesmo início! ${conflictStart.title}`);
+        return;
+      }
+
+      if(conflictDay.has) {
+          toast.error(`A data de início definida conflita com o evento ${conflictDay.title} pois a data do mesmo está
+            entre o ínicio e o fim do evento já cadastrado`);
+        return;
+      }
 
       const newEvent: eventListProps = {
         title: value.title,
@@ -56,6 +128,8 @@ export default function CalendarPage() {
       };
 
       setEventsList((prev) => [...prev, newEvent]);
+      toast.success("Evento adicionado");
+
       form.reset();
     },
   });
@@ -65,7 +139,7 @@ export default function CalendarPage() {
   const formInputs = () => {
     return (
       <div className="flex flex-col items-center gap-2 ">
-        <div className="flex flex-row items-center gap-2 border-b border-white/50 pb-2">
+        <div className="flex flex-row w-full items-center gap-2 border-b border-white/50 pb-2">
           <div className="w-8 h-8 bg-white/20 rounded-full flex justify-center items-center">
             <FaTasks color="white" className="opacity-50" />
           </div>
@@ -76,7 +150,7 @@ export default function CalendarPage() {
             </p>
           </div>
         </div>
-        <div className="flex-1 flex flex-col gap-4 py-2">
+        <div className="flex-1 flex flex-col gap-4 py-2 w-full">
           {Object.entries(eventCalendarFieldsDetails).map((k, idx) => (
             <form.Field
               name={k[0] as eventCalendarTypeFields}
@@ -144,20 +218,28 @@ export default function CalendarPage() {
           onClick={() => {
             form.handleSubmit();
           }}
-          className=" hover:cursor-pointer w-full py-1 flex justify-center items-center rounded-lg"
+          className=" hover:cursor-pointer w-full flex justify-center items-center rounded-lg"
         >
           <p className="text-xs text-white/70 font-bold">ENVIAR</p>
+        </div>
+
+        <div
+          onClick={() => {
+            setShowInputForm(false);
+          }}
+          className=" hover:cursor-pointer"
+        >
+          <p className="text-[9px] text-white/70">Fechar</p>
         </div>
       </div>
     );
   };
 
-
   return (
     <div className="flex flex-col items-start w-full bg-black/50">
       <MenuAppBar router={router} menuName={"Calendário de Reuniões"} />
       <div className="flex flex-1 w-full px-10  justify-center items-center gap-5">
-        <div className=" bg-gray-600/10 rounded-2xl w-full">
+        <div className=" bg-gray-600/10 rounded-2xl">
           <Calendar
             localizer={localizer}
             events={myEventsList}
@@ -204,11 +286,9 @@ export default function CalendarPage() {
             onClick={() => {
               setShowInputForm(!showInputForm);
             }}
-            className="absolute right-5 bottom-5 flex flex-row gap-2 items-center p-2 opacity-70 hover:opacity-100 bg-white rounded-2xl hover:cursor-pointer"
+            className="absolute right-5 bottom-5 items-center justify-center flex flex-row gap-2  w-8 h-8 opacity-70 hover:opacity-100 bg-white rounded-full hover:cursor-pointer"
           >
-            <IoIosAddCircle color={"#000"} className="w-4 h-4" />
-
-            <p className="text-black text-sm font-bold">Adicionar Evento</p>
+            <MdAdd color="black" size={24} />
           </div>
         )}
       </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import { Toaster } from "react-hot-toast";
 
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Next APP For G10",
@@ -15,6 +16,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+      <Toaster />
+
         {children}
       </body>
     </html>
