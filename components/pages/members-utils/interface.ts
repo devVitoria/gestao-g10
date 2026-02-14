@@ -1,6 +1,6 @@
 export type mockUserInfoType = {
     name: string,
     birthday: string,
-    flagBirth: boolean,
-    active: boolean
+    flagBirth: string,
+    active: string
   }

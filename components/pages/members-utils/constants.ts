@@ -4,21 +4,21 @@ import { mockUserInfoType } from "./interface";
 export const mockUserInfo: mockUserInfoType[] = [{
     name: 'Vitória',
     birthday: '25/01',
-    flagBirth: true,
-    active: true
+    flagBirth: 'true',
+    active: 'true'
   }, {
     name: 'Teste',
     birthday: '25/10',
-    flagBirth: false,
-    active: true
+    flagBirth: 'false',
+    active: 'false'
   },{
     name: 'Teste2',
     birthday: '25/12',
-    flagBirth: false,
-    active: false
+    flagBirth: 'false',
+    active: 'false'
   }]
 
-  const columns: ColumnDef<mockUserInfoType>[] = [
+  export const columns: ColumnDef<mockUserInfoType>[] = [
   {
     accessorKey: "name",
     header: "Nome",
