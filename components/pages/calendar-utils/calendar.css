@@ -84,7 +84,8 @@ background-color: #e2e8f0;
 }
 
 .rbc-today {
-  background-color: #fff;
+  background-color: #42585f;
+  border-color: #00A095;
   opacity: 0.7;
   color: #000
 }
