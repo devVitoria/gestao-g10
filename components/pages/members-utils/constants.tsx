@@ -75,7 +75,7 @@ export const memberFieldsDetails: Record<
     icon: (
       <MdDriveFileRenameOutline
         color="white"
-        className="opacity-80 w-2.5 h-2.5"
+        className=" w-3 h-3"
       />
     ),
 
@@ -88,7 +88,7 @@ export const memberFieldsDetails: Record<
         subtitle: "Insira o aniversário do membro",
 
     icon: (
-      <LiaBirthdayCakeSolid color="white" className="opacity-80 w-2.5 h-2.5" />
+      <LiaBirthdayCakeSolid color="white" className=" w-3 h-3" />
     ),
 
     type: "date",

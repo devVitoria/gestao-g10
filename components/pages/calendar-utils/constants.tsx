@@ -20,7 +20,7 @@ export const eventCalendarFieldsDetails: Record<
     title: "Título do evento",
     subtitle: "Insira o título do evento. Exemplo: Reunião mensal",
     placeholder: "Treinamento",
-    icon: <MdTextFields color="white" className="opacity-80 w-2.5 h-2.5" />,
+    icon: <MdTextFields color="white" className=" w-3 h-3" />,
     type: "text",
   },
   start: {
@@ -30,7 +30,7 @@ export const eventCalendarFieldsDetails: Record<
     min:`${moment().year}-01-01`,
     max:`${moment().year}-12-31`,
     icon: (
-      <WiDaySunnyOvercast color="white" className="opacity-80 w-2.5 h-2.5" />
+      <WiDaySunnyOvercast color="white" className=" w-3 h-3" />
     ),
     type: "date",
   },
@@ -38,7 +38,7 @@ export const eventCalendarFieldsDetails: Record<
     title: "Horário",
     subtitle: "Hora e minutagem",
     placeholder: "HH:MM",
-    icon: <LuAlarmClock color="white" className="opacity-80 w-2.5 h-2.5" />,
+    icon: <LuAlarmClock color="white" className=" w-3 h-3" />,
     type: "time",
     maxlenght: 4,
     min:"00:00",
@@ -48,7 +48,7 @@ export const eventCalendarFieldsDetails: Record<
     title: "Duração do evento",
     subtitle: "Duração em minutos",
     placeholder: "30",
-    icon: <GiDuration color="white" className="opacity-80 w-2.5 h-2.5" />,
+    icon: <GiDuration color="white" className=" w-3 h-3" />,
     type: "number",
     maxlenght: 3,
   },

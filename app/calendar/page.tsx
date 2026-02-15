@@ -181,10 +181,10 @@ export default function CalendarPage() {
               }}
               children={(field) => {
                 return (
-                  <div className="flex flex-col gap-1">
-                    <div className="flex flex-col">
+                  <div className="flex-1 flex-col gap-1 py-4">
+                    <div className="flex  flex-col pb-2">
                       <div className="flex flex-row gap-1 items-center">
-                        <div className=" bg-white/20 w-3 h-3 rounded-full flex justify-center items-center">
+                        <div className="w-3 h-3 rounded-full flex justify-center items-center">
                           {k[1].icon}
                         </div>
                         <label
@@ -200,7 +200,7 @@ export default function CalendarPage() {
                       </p>
                     </div>
                     <input
-                      className="text-white/70 border hover:cursor border-white/50 px-2 py-1 rounded-md  text-xs outline-0"
+                      className="text-white/70 w-full border hover:cursor border-white/50 px-2 py-1 rounded-md  text-xs outline-0"
                       id={field.name}
                       name={field.name}
                       value={field.state.value}
