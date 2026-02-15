@@ -23,6 +23,7 @@ import {
 import { IoIosAddCircle } from "react-icons/io";
 import { FaTasks } from "react-icons/fa";
 import { MdAdd } from "react-icons/md";
+import { IoClose } from "react-icons/io5";
 
 moment.locale("pt-br");
 
@@ -138,19 +139,31 @@ export default function CalendarPage() {
 
   const formInputs = () => {
     return (
-      <div className="flex flex-col items-center gap-2 ">
+      <div className="flex-1 flex-col items-center gap-2 ">
         <div className="flex flex-row w-full items-center gap-2 border-b border-white/50 pb-2">
           <div className="w-8 h-8 bg-white/20 rounded-full flex justify-center items-center">
             <FaTasks color="white" className="opacity-50" />
           </div>
+          <div className="flex flex-row items-center justify-between w-full">
           <div className="flex flex-col justify-start items-start">
             <p className="text-white/50 font-bold text-sm"> Insira um evento</p>
             <p className="text-white/50 text-[9px]">
               Preencha os campos abaixo
             </p>
           </div>
+       <div
+              onClick={() => {
+            setShowInputForm(false);
+              }}
+              className=" hover:cursor-pointer"
+            >
+              <IoClose className="opacity-70" />
+            </div>
+          
+          
+          </div>
         </div>
-        <div className="flex-1 flex flex-col gap-4 py-2 w-full">
+        <div className="flex-1 flex flex-row justify-around gap-4 py-2 w-full">
           {Object.entries(eventCalendarFieldsDetails).map((k, idx) => (
             <form.Field
               name={k[0] as eventCalendarTypeFields}
@@ -218,19 +231,12 @@ export default function CalendarPage() {
           onClick={() => {
             form.handleSubmit();
           }}
-          className=" hover:cursor-pointer w-full flex justify-center items-center rounded-lg"
+          className=" hover:cursor-pointer w-full flex justify-center items-center rounded-lg pt-2"
         >
           <p className="text-xs text-white/70 font-bold">ENVIAR</p>
         </div>
 
-        <div
-          onClick={() => {
-            setShowInputForm(false);
-          }}
-          className=" hover:cursor-pointer"
-        >
-          <p className="text-[9px] text-white/70">Fechar</p>
-        </div>
+      
       </div>
     );
   };
@@ -270,16 +276,10 @@ export default function CalendarPage() {
         </div>
 
         {showInputForm && (
-          <div
-            className="flex-1 flex justify-center items-center border border-white/10 bg-white/5  rounded-2xl"
-            style={{
-              height: "90vh",
-            }}
-          >
-            <div className="flex p-5  justify-center items-center">
+      
+          <div className="flex bg-black z-50 max-h-1/2 absolute w-full bottom-0 left-0  justify-center items-center border-t p-5 rounded-t-2xl">
               {formInputs()}
             </div>
-          </div>
         )}
         {!showInputForm && (
           <div
