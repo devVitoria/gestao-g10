@@ -1,20 +1,20 @@
 import { MdTextFields } from "react-icons/md";
-import { eventCalendarForm, eventCalendarTypeFields } from "./interface";
+import { EventCalendarForm, EventCalendarTypeFields } from "./interface";
 import { LuAlarmClock } from "react-icons/lu";
 import { GiDuration } from "react-icons/gi";
 import { WiDaySunnyOvercast } from "react-icons/wi";
 import moment from "moment";
 
-export const eventCalendarFields: Record<eventCalendarTypeFields, string> = {
+export const eventCalendarFields: Record<EventCalendarTypeFields, string> = {
   title: "",
   start: "",
   hour: "",
   duration: "",
 };
 
-export const eventCalendarFieldsDetails: Record<
-  eventCalendarTypeFields,
-  eventCalendarForm
+export const eventCalendarFieldsInputsDetails: Record<
+  EventCalendarTypeFields,
+  EventCalendarForm
 > = {
   title: {
     title: "Título do evento",

@@ -29,7 +29,7 @@ export default function MenuAppBar({
   };
 
   const handleBackHome = () => {
-    router.back();
+    router.push('/');
   };
 
   const handleClose = () => {

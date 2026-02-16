@@ -1,5 +1,5 @@
 'use client'
-import Threads from "@/components/home-background/threads-file";
+import Threads from "@/components/pages/home-utils/home-background/threads-file";
 import MenuAppBar from "../components/header";
 import { useRouter } from "next/navigation";
 

@@ -1,9 +1,9 @@
 import { ColumnDef } from "@tanstack/react-table";
-import { memberFieldsDetailsProps, mockUserInfoType } from "./interface";
-import { MdDriveFileRenameOutline, MdTextFields } from "react-icons/md";
+import { MemberFieldsDetailsProps, MockUserInfoType } from "./interface";
+import { MdDriveFileRenameOutline } from "react-icons/md";
 import { LiaBirthdayCakeSolid } from "react-icons/lia";
 
-export const mockUserInfo: mockUserInfoType[] = [
+export const mockUserInfo: MockUserInfoType[] = [
   {
     name: "Vitória",
     birthday: "25/01",
@@ -13,7 +13,7 @@ export const mockUserInfo: mockUserInfoType[] = [
 
 ];
 
-export const columns: ColumnDef<mockUserInfoType>[] = [
+export const columns: ColumnDef<MockUserInfoType>[] = [
   {
     accessorKey: "name",
     header: "Nome",
@@ -35,38 +35,15 @@ export const columns: ColumnDef<mockUserInfoType>[] = [
   },
 ];
 
-export const renderIndicator = (ind: string) => {
-  const isBool = ind === "true" || ind === "false";
-  if (!isBool) {
-    return null;
-  }
 
-  if (ind === "true") {
-    return (
-      <div className="flex w-full items-center justify-center">
-        <div className="w-16 h-6  rounded-2xl flex justify-center items-center">
-          <p className="text-green-600/50 font-bold">Sim</p>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="flex w-full items-center justify-center">
-      <div className="w-16 h-6 rounded-2xl flex justify-center items-center">
-        <p className="text-red-600/50 font-bold">Não</p>
-      </div>
-    </div>
-  );
-};
 export const membersFields = {
   name: "",
   birthday: "",
 };
 
-export const memberFieldsDetails: Record<
+export const memberFieldsInputDetails: Record<
   keyof typeof membersFields,
-  memberFieldsDetailsProps
+  MemberFieldsDetailsProps
 > = {
   name: {
     title: "Nome do membro",

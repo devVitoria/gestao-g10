@@ -1,13 +1,13 @@
 import React from "react"
 
-export type mockUserInfoType = {
+export type MockUserInfoType = {
     name: string,
     birthday: string,
     flagBirth: string,
     active: string
   }
 
-export interface memberFieldsDetailsProps {
+export interface MemberFieldsDetailsProps {
     title: string,
     placeholder: string,
     icon: React.ReactNode,

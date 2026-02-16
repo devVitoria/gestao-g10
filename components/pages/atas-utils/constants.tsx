@@ -1,29 +1,26 @@
-import { ColumnDef } from "@tanstack/react-table";
-import { FaRegCalendarCheck, FaUserTie } from "react-icons/fa";
-import { VscLayersActive } from "react-icons/vsc";
 import { MockAtaFields } from "./interface";
-import { ataFieldsDetailsProps } from "./interface";
+import { AtaInputDetailsProps } from "./interface";
 import { GrDocumentDownload } from "react-icons/gr";
 import { PiVideoConferenceThin } from "react-icons/pi";
 import { BsCalendarDate } from "react-icons/bs";
 
-export const mochAtas: MockAtaFields[] = [
+export const mockAtas: MockAtaFields[] = [
   {
     dtaAta: "25/01",
-    refMeeting: "Supervisionar máquina de café (insumos)",
+    refMeeting: "",
     ata: '',
   },
 ];
 
-export const ataFieldsInitialValues = {
+export const ataInitialValues = {
   dtaAta: "",
   refMeeting: "",
   ata: '',
 };
 
 export const ataFieldsDetails: Record<
-  keyof typeof ataFieldsInitialValues,
-  ataFieldsDetailsProps
+  keyof typeof ataInitialValues,
+  AtaInputDetailsProps
 > = {
   dtaAta: {
     title: "Data de Ata",

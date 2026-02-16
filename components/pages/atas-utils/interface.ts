@@ -4,7 +4,7 @@ export interface MockAtaFields {
   ata: any;
 }
 
-export interface ataFieldsDetailsProps {
+export interface AtaInputDetailsProps {
     title: string,
     placeholder: string,
     icon: React.ReactNode,
