@@ -1,13 +1,28 @@
-'use client'
+"use client";
+
+import { useEffect, useState } from "react";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import grzLogo from "../../../../assets/images/grz-logo.png";
 import { MenuDrawerProps } from "../interface";
 import { menuOptions } from "../constants";
 
 export default function MenuDrawer({ setOpen, open, router }: MenuDrawerProps) {
-    return (
+  const [drawerWidth, setDrawerWidth] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setDrawerWidth(window.innerWidth * 0.2);
+    };
+
+    handleResize(); 
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return (
     <SwipeableDrawer
-      anchor={"left"}
+      anchor="left"
       style={{ width: "100vw" }}
       open={open}
       onClose={() => setOpen(false)}
@@ -15,7 +30,7 @@ export default function MenuDrawer({ setOpen, open, router }: MenuDrawerProps) {
       sx={{
         "& .MuiDrawer-paper": {
           backgroundColor: "#1c1c1b",
-          minWidth: window.innerWidth * 0.2,
+          minWidth: drawerWidth,
           borderTopRightRadius: 20,
           display: "flex",
           justifyContent: "center",
@@ -28,10 +43,7 @@ export default function MenuDrawer({ setOpen, open, router }: MenuDrawerProps) {
           <div className="flex flex-row items-center gap-2">
             <img
               src={grzLogo.src}
-              style={{
-                width: 16,
-                height: 16,
-              }}
+              style={{ width: 16, height: 16 }}
             />
             <p className="italic opacity-70 text-base text-white/80">
               Gestão G-10
@@ -39,13 +51,13 @@ export default function MenuDrawer({ setOpen, open, router }: MenuDrawerProps) {
           </div>
           <p className="italic opacity-70 text-xs text-white/80">2026</p>
         </div>
+
         <div className="flex w-full flex-col gap-4">
           {menuOptions.map((o) => (
             <div
+              key={o.title}
               className="flex flex-row justify-start items-center gap-1"
-              onClick={() =>
-                router.push(o.path ?? "")
-              }
+              onClick={() => router.push(o.path ?? "")}
             >
               {o.icon}
               <p className="italic opacity-70 text-xs text-white/80 hover:text-white hover:cursor-pointer hover:font-bold">
